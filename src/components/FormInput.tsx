@@ -25,7 +25,7 @@ export const FormInput: React.FC<FormInputProps> = ({
         onChangeText={onChangeText}
         placeholder={placeholder}
         secureTextEntry={secureTextEntry}
-        placeholderTextColor={colors.subtitle}
+        placeholderTextColor={colors.gray500}
       />
       {errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>}
     </View>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   input: {
     height: 48,
     borderWidth: 1,
-    borderColor: colors.inputBorder,
+    borderColor: colors.border,
     borderRadius: 12,
     paddingHorizontal: 14,
     fontSize: 16,

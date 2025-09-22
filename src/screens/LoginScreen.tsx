@@ -21,12 +21,13 @@ export const LoginScreen = ({ navigation }: any) => {
 
   const onSubmit = async (data: LoginForm) => {
     console.log('Login data:', data);
-    // TODO: Amplify signIn integration
-    // try {
-    //   await signIn({ username: data.identifier, password: data.password });
-    // } catch (error) {
-    //   console.error('Login error:', error);
-    // }
+    // TODO: Integrar Amplify Auth
+    navigation.replace('Tabs');
+  };
+
+  const handleQuickLogin = () => {
+    // Navegación directa sin validar credenciales
+    navigation.replace('Tabs');
   };
 
   const handleGoogleLogin = () => {
@@ -76,7 +77,7 @@ export const LoginScreen = ({ navigation }: any) => {
         )}
       />
 
-      <TouchableOpacity style={styles.loginButton} onPress={handleSubmit(onSubmit)}>
+      <TouchableOpacity style={styles.loginButton} onPress={handleQuickLogin}>
         <Text style={styles.loginButtonText}>Iniciar sesión</Text>
       </TouchableOpacity>
 
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
   logoText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: colors.primaryText,
+    color: colors.text,
   },
   title: {
     fontSize: 30,
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    color: colors.subtitle,
+    color: colors.gray500,
     textAlign: 'center',
     marginBottom: 32,
   },
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 48,
     borderWidth: 1,
-    borderColor: colors.inputBorder,
+    borderColor: colors.border,
     borderRadius: 12,
     backgroundColor: colors.white,
     marginBottom: 24,
@@ -162,7 +163,7 @@ const styles = StyleSheet.create({
   loginButtonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: colors.primaryText,
+    color: colors.text,
   },
   signupContainer: {
     flexDirection: 'row',
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   signupText: {
-    color: colors.subtitle,
+    color: colors.gray500,
   },
   signupLink: {
     color: colors.primary,
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
   },
   legalText: {
     fontSize: 12,
-    color: colors.legal,
+    color: colors.gray400,
     textAlign: 'center',
     lineHeight: 16,
   },

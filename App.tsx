@@ -1,46 +1,28 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LoginScreen } from './src/screens/LoginScreen';
 import { SignUpScreen } from './src/screens/SignUpScreen';
-import { colors } from './src/theme/colors';
+import BottomTabs from './src/navigation/BottomTabs';
 
-// TODO: Uncomment when Amplify is ready
-// import { Amplify } from 'aws-amplify';
-// import outputs from './amplify_outputs.json';
-
-const Stack = createNativeStackNavigator();
-
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    background: colors.background,
-  },
+export type RootStackParamList = {
+  Login: undefined;
+  SignUp: undefined;
+  Tabs: undefined;
 };
 
-export default function App() {
-  useEffect(() => {
-    // TODO: Configure Amplify when amplify_outputs.json exists
-    // try {
-    //   Amplify.configure(outputs);
-    // } catch (error) {
-    //   console.log('Amplify configuration not found');
-    // }
-  }, []);
+const Stack = createNativeStackNavigator<RootStackParamList>();
+const theme = { ...DefaultTheme, colors: { ...DefaultTheme.colors, background: '#fff7ea' } };
 
+export default function App() {
   return (
     <NavigationContainer theme={theme}>
-      <StatusBar style="dark" backgroundColor={colors.background} />
-      <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
+      <StatusBar style="dark" backgroundColor="#fff7ea" />
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen name="Tabs" component={BottomTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );
