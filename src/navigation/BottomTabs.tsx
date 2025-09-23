@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { View, Text } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
+import DeliScreen from '../screens/DeliScreen';
 
 export type RootTabParamList = {
   Inicio: undefined;
@@ -44,7 +45,7 @@ export default function BottomTabs() {
       })}
     >
       <Tab.Screen name="Inicio" component={HomeScreen} />
-      <Tab.Screen name="Deli" component={() => <Stub label="Deli" />} />
+      <Tab.Screen name="Deli" component={DeliScreen} />
       <Tab.Screen name="Carrito" component={() => <Stub label="Carrito" />} />
       <Tab.Screen name="Pedidos" component={() => <Stub label="Pedidos" />} />
       <Tab.Screen name="Perfil" component={() => <Stub label="Perfil" />} />

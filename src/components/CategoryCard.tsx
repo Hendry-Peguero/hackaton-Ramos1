@@ -26,12 +26,14 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({ name, image, onPress
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.pearlWhite,
     borderRadius: 12,
     padding: 8,
     marginHorizontal: 6,
     marginBottom: 12,
-    shadowColor: colors.black,
+    borderWidth: 1,
+    borderColor: colors.sandGray,
+    shadowColor: colors.oceanBlue,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -44,12 +46,12 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 120,
     borderRadius: 8,
-    backgroundColor: colors.border,
+    backgroundColor: colors.sandGray,
   },
   text: {
     fontSize: 14,
-    fontWeight: '500',
-    color: colors.text,
+    fontWeight: '600',
+    color: colors.black,
     textAlign: 'center',
     marginTop: 8,
   },

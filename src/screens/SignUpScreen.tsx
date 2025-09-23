@@ -1,11 +1,14 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Ionicons } from '@expo/vector-icons';
 import { FormInput } from '../components/FormInput';
 import { colors } from '../theme/colors';
+import logo from '../images/logo.png';
+import { useFonts, Pacifico_400Regular } from '@expo-google-fonts/pacifico';
+import * as Font from 'expo-font';
 
 const signUpSchema = z.object({
   name: z.string().min(3, 'Mínimo 3 caracteres'),
@@ -20,6 +23,10 @@ const signUpSchema = z.object({
 type SignUpForm = z.infer<typeof signUpSchema>;
 
 export const SignUpScreen = ({ navigation }: any) => {
+  const [fontsLoaded] = useFonts({
+    Pacifico_400Regular,
+  });
+
   const { control, handleSubmit, formState: { errors } } = useForm<SignUpForm>({
     resolver: zodResolver(signUpSchema),
   });
@@ -46,16 +53,18 @@ export const SignUpScreen = ({ navigation }: any) => {
     console.log('Google signup pressed');
   };
 
+  if (!fontsLoaded) {
+    return null; // or a loading spinner
+  }
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.logoContainer}>
-        <View style={styles.logo}>
-          <Text style={styles.logoText}>S</Text>
-        </View>
+        <Image source={logo} style={styles.logo} resizeMode="contain" />
       </View>
 
-      <Text style={styles.title}>Crear cuenta</Text>
-      <Text style={styles.subtitle}>Únete a SirenaGo Deli en segundos.</Text>
+      <Text style={styles.title}>Sirena GO</Text>
+      <Text style={styles.subtitle}>Únete a Sirena GO en segundos.</Text>
 
       <TouchableOpacity style={styles.googleButton} onPress={handleGoogleSignUp}>
         <Ionicons name="logo-google" size={20} color={colors.black} />
@@ -144,30 +153,23 @@ const styles = StyleSheet.create({
   content: {
     padding: 24,
     paddingTop: 60,
+    flexGrow: 1,
+    justifyContent: 'center',
   },
   logoContainer: {
     alignItems: 'center',
     marginBottom: 24,
   },
   logo: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: colors.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logoText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: colors.primaryText,
+    width: 80,
+    height: 80,
   },
   title: {
     fontSize: 30,
-    fontWeight: '800',
+    fontFamily: 'Pacifico_400Regular',
     textAlign: 'center',
     marginBottom: 8,
-    color: colors.black,
+    color: colors.oceanBlue,
   },
   subtitle: {
     fontSize: 16,
@@ -181,7 +183,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 48,
     borderWidth: 1,
-    borderColor: colors.inputBorder,
+    borderColor: colors.sandGray,
     borderRadius: 12,
     backgroundColor: colors.white,
     marginBottom: 24,
@@ -193,7 +195,7 @@ const styles = StyleSheet.create({
   },
   signUpButton: {
     height: 48,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.oceanBlue,
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
@@ -202,7 +204,7 @@ const styles = StyleSheet.create({
   signUpButtonText: {
     fontSize: 16,
     fontWeight: '600',
-    color: colors.primaryText,
+    color: colors.white,
   },
   loginContainer: {
     flexDirection: 'row',
@@ -213,8 +215,9 @@ const styles = StyleSheet.create({
     color: colors.subtitle,
   },
   loginLink: {
-    color: colors.primary,
+    color: colors.oceanBlue,
     textDecorationLine: 'underline',
+    fontWeight: '600',
   },
   legalText: {
     fontSize: 12,

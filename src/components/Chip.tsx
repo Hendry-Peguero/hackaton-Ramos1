@@ -26,21 +26,22 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 20,
-    backgroundColor: colors.gray100,
+    backgroundColor: colors.pearlWhite,
     marginRight: 8,
     borderWidth: 1,
-    borderColor: colors.border,
+    borderColor: colors.sandGray,
   },
   activeChip: {
-    backgroundColor: colors.primary,
-    borderColor: colors.primary,
+    backgroundColor: colors.oceanBlue,
+    borderColor: colors.oceanBlue,
   },
   chipText: {
     fontSize: 14,
     fontWeight: '500',
-    color: colors.gray600,
+    color: colors.black,
   },
   activeChipText: {
     color: colors.white,
+    fontWeight: '600',
   },
 });

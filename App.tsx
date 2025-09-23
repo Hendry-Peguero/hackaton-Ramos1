@@ -13,12 +13,12 @@ export type RootStackParamList = {
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-const theme = { ...DefaultTheme, colors: { ...DefaultTheme.colors, background: '#fff7ea' } };
+const theme = { ...DefaultTheme, colors: { ...DefaultTheme.colors, background: '#FFFFFF' } };
 
 export default function App() {
   return (
     <NavigationContainer theme={theme}>
-      <StatusBar style="dark" backgroundColor="#fff7ea" />
+      <StatusBar style="dark" backgroundColor="#FFFFFF" />
       <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
